@@ -1,3 +1,4 @@
+
 # Installation Aptos Validator + Fullnode
 
 Il vous faut de préference un serveur VPS avec un SSD minimum 350 Go
@@ -119,6 +120,32 @@ Et on lance le Docker Compose
 
 ```bash
 docker compose up -d
+```
+
+## Quelques commandes utiles
+
+Pour vérifier les logs de votre validateur:
+
+```bash
+docker logs -f testnet-validator-1 --tail 50
+```
+
+Pour vérifier les logs de votre fullnode:
+
+```bash
+docker logs -f testnet-fullnode-1 --tail 50
+```
+
+Pour vérifier les statut de synchronisation:
+
+```bash
+curl 127.0.0.1:9101/metrics 2> /dev/null | grep aptos_state_sync_version | grep type
+```
+
+Pour rédemarrer le validateur + fullnode
+
+```bash
+docker compose restart
 ```
 
 Pour toutes les questions: TG: @nickkauffmann
